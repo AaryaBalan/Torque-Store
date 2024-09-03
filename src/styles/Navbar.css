@@ -1,0 +1,23 @@
+
+li{
+    list-style: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E56B6F;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    height: 70px;
+    box-shadow: 1px 1px 25px #e0dfdd;
+}
+
+.right-options{
+    display: flex;
+    column-gap: 20px;
+}
