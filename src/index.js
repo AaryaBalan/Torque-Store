@@ -5,20 +5,55 @@ import Navbar from './components/Navbar.js';
 import Banner from './components/Banner.js';
 import Products from './components/Products.js';
 import Cart from './components/Cart.js';
+import Checkout from './components/Checkout.js';
+import Search from './components/Search.js';
 import { useState } from 'react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const categories = [
+  "vehicle",
+  "laptops",
+  "smartphones",
+  "mobile-accessories",
+  "sunglasses",
+  "tablets",
+  "womens-dresses",
+  "tops",
+  "mens-shirts",
+  "womens-shoes",
+  "mens-shoes",
+  "sports-accessories",
+  "womens-watches",
+  "mens-watches",
+  "womens-bags",
+  "womens-jewellery",
+  "skin-care",
+  "beauty",
+  "fragrances",
+  "furniture",
+  "groceries",
+  "home-decoration",
+  "kitchen-accessories",
+  "motorcycle",
+]
+
 // let isCart = false
 function Index() {
 
   //states
 
-  let [isCart, setIsCart] = useState(true)
+  let [isCart, setIsCart] = useState(false)
+  let [isCheckout, setIsCheckout] = useState(false)
+  let [isProducts, setIsProducts] = useState(true)
+  let [isSearch, setIsSearch] = useState(false)
+
+
+  let [recentCheckoutId, setRecentCheckoutId] = useState(0)
   let [cart, setCart] = useState(JSON.parse(localStorage.getItem('cartItems')) || [])
   let [totalPrice, setTotalPrice] = useState(Number(localStorage.getItem('totalPrice')) || 0)
 
   // setting local storage
-
   localStorage.setItem('cartItems', JSON.stringify(cart))
   localStorage.setItem('totalPrice', Number(totalPrice))
 
@@ -38,52 +73,80 @@ function Index() {
 
   // obj keys
 
-  const propsForProduct = {
-    cartProducts: cart,
-    addCart: addToCart,
-    addPrice: addPrice
-  }
+  const allProps = {
+    propsForNav: {
+      setIsCart: setIsCart,
+      setIsProducts: setIsProducts,
+      setIsCheckout: setIsCheckout,
+      setIsSearch: setIsSearch
+    },
 
-  const propsForCart = {
-    handleClick: () => setIsCart(true),
-    products: cart,
-    setCart: setCart,
-    totalPrice: totalPrice,
-    setTotalPrice: setTotalPrice
+    propsForProduct: {
+      setIsCheckout: setIsCheckout,
+      setIsProducts: setIsProducts,
+      cartProducts: cart,
+      addCart: addToCart,
+      addPrice: addPrice,
+      recentCheckoutId: setRecentCheckoutId,
+      setIsSearch: setIsSearch, 
+      setIsCart: setIsCart
+    },
+
+    propsForCart: {
+      setIsCart: setIsCart,
+      setIsProducts: setIsProducts,
+      setIsCheckout: setIsCheckout,
+      recentCheckoutId: setRecentCheckoutId,
+      products: cart,
+      setCart: setCart,
+      totalPrice: totalPrice,
+      setTotalPrice: setTotalPrice,
+      setIsSearch: setIsSearch
+    },
+
+    propsForCheckout: {
+      setIsCheckout: setIsCheckout,
+      setIsProducts: setIsProducts,
+      setIsCart: setIsCart,
+      checkoutId: recentCheckoutId,
+      cartProducts: cart,
+      addCart: addToCart,
+      addPrice: addPrice,
+      setIsSearch: setIsSearch
+    }
   }
 
 
   //rendering elements
   return (
     <>
-      <Navbar handleClick={() => setIsCart(false)} />
-      {isCart &&
+      <Navbar all={allProps.propsForNav} />
+      {
+        isSearch &&
+        <Search all={allProps.propsForProduct} />
+      }
+      {isProducts &&
         <>
           <Banner />
-        <Products categoryType='vehicle' all={propsForProduct} />
-        <Products categoryType='laptops' all={propsForProduct} />
-        <Products categoryType='smartphones' all={propsForProduct} />
-        <Products categoryType='tablets' all={propsForProduct} />
-        <Products categoryType='mens-shirts' all={propsForProduct} />
-        <Products categoryType='mens-shoes' all={propsForProduct} />
-        <Products categoryType='mens-watches' all={propsForProduct} />
-        <Products categoryType='sunglasses' all={propsForProduct} />
-        <Products categoryType='womens-dresses' all={propsForProduct} />
-        <Products categoryType='womens-jewellery' all={propsForProduct} />
-        <Products categoryType='womens-bags' all={propsForProduct} />
-        <Products categoryType='womens-shoes' all={propsForProduct} />
-        <Products categoryType='womens-watches' all={propsForProduct} />
-        <Products categoryType='motorcycle' all={propsForProduct} />
-
-
+          {categories.map(category => {
+            return <Products categoryType={category} all={allProps.propsForProduct} />
+          })}
         </>
       }
 
-      {!isCart &&
+      {isCart &&
         <>
-          <Cart all={propsForCart}/>
+          <Cart all={allProps.propsForCart} />
         </>
       }
+
+      {
+        isCheckout &&
+        <>
+          <Checkout all={allProps.propsForCheckout} />
+        </>
+      }
+
     </>
   )
 

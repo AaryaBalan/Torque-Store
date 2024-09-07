@@ -1,30 +1,9 @@
 import { useEffect, useState } from "react";
 import '../styles/Products.css'
+import { onCheckout, addToCart, dollorToRupee } from "./controlers";
 
-function dollorToRupee(price) {
-    return Math.round(price * 83.92).toFixed(2)
-}
 
 function Products(props) {
-
-    function onClickCart(e, product) {
-        const a = props.all.cartProducts.every(cartProduct => product.id !== cartProduct.id)
-        if (a) {
-            e.target.textContent = 'Done'
-            setInterval(() => {
-                e.target.textContent = 'Add To Cart'
-            }, 1300)
-            props.all.addCart(product)
-            props.all.addPrice(Number(dollorToRupee(product.price)))
-        }
-        else{
-            e.target.textContent = 'Added'
-            setInterval(() => {
-                e.target.textContent = 'Add To Cart'
-            }, 1300)
-        }
-    }
-
     const [fakeProduts, setFakeProducts] = useState([])
 
     useEffect(() => {
@@ -55,8 +34,8 @@ function Products(props) {
                                 </div>
 
                                 <div className="options-block">
-                                    <div className="checkout-btn">CheckOut</div>
-                                    <div className="cart-btn" onClick={(e) => onClickCart(e, product)}>Add To Cart</div>
+                                    <div className="checkout-btn" onClick={() => onCheckout(props, product.id)}>CheckOut</div>
+                                    <div className="cart-btn" onClick={(e) => addToCart(props, e, product)}>Add To Cart</div>
                                 </div>
                             </div>
                         )

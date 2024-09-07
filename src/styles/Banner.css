@@ -1,5 +1,23 @@
-img{
-    width: 100%;
+.banner{
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.text{
+    font-weight: bold;
+    font-size: 30px;
+    background-color: #6d597a;
+    padding: 20px;
+    color: white;
+    border-radius: 100px;
+}
+
+.banner-img{
+    width: 700px;
+    height: 700px;
     object-fit: cover;
     object-position: center;
 }

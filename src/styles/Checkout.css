@@ -1,0 +1,195 @@
+.checkout-page {
+    margin: 50px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.checkout-goback {
+    margin-left: 30px;
+    margin-bottom: 30px;
+    background-color: #6D597A;
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    display: inline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rating-area {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.star-img {
+    height: 50px;
+    mix-blend-mode: multiply;
+}
+
+.checkout-cart {
+    margin-left: 30px;
+    margin-bottom: 30px;
+    background-color: #355070;
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    display: inline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.checkout-title,
+.checkout-tag,
+.checkout-ratings {
+    color: #355070;
+}
+
+.top-options {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-page {
+    display: flex;
+    justify-content: space-around;
+    align-items: top;
+    font-weight: bold;
+    column-gap: 50px;
+    line-height: 1.5;
+}
+
+.left-portion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.right-portion {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+.right-portion-info,
+.warranty-info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 17px;
+}
+
+.checkout-img {
+    height: 500px;
+    border-bottom: 1px solid black;
+}
+
+div span {
+    color: #b56576;
+}
+
+.review-head {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+    background-color: #c9cba3;
+    padding: 5px 30px;
+    border-radius: 10px;
+}
+
+.review-main-block {
+    display: flex;
+    column-gap: 50px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.reviews-block {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+    margin-top: 50px;
+    background-color: #eaac8b;
+    padding: 5px 10px;
+    border-radius: 7px;
+}
+
+.review-top-block {
+    display: flex;
+    column-gap: 30px;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.profile-img {
+    font-size: 40px;
+    background-color: #6d597a;
+    color: white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.star-review-area{
+    display: flex;
+    align-items: center;
+}
+
+.review-bottom-block {
+    display: flex;
+    column-gap: 40px;
+    background-color: #b56576;
+    padding: 5px 30px;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-detail-block {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    font-weight: bold;
+    border-radius: 7px;
+    padding: 10px;
+    width: 350px;
+    background-color: #c9cba3;
+    color: #293241;
+    height: min-content;
+}
+
+.quantity-block{
+    display: flex;
+    column-gap: 50px;
+    align-items: center;
+}
+
+.quantity-btns{
+    display: flex;
+    column-gap: 10px;
+}
+
+.increase, .decrease{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #6d597a;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
