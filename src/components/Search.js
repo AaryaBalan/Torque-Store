@@ -15,10 +15,6 @@ function Search(props) {
             .then(data => setSearchProducts(data.products))
     }, [searchText])
 
-
-
-    
-
     return (
         <>
             <br /><br />
